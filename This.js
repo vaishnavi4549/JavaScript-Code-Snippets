@@ -5,11 +5,11 @@
 //The value of this in JavaScript depends on how a function is invoked (runtime binding), not how it is defined. 
 //When a regular function is invoked as a method of an object (obj.method()), this points to that object. When invoked as a standalone function 
 //(not attached to an object: func()), this typically refers to the global object (in non-strict mode) or undefined
-
-//if the property or fun not defined inside obj it's consider as Wondow obj globally
+//This inside a function will return Window object if not called on any object or call/bind/apply
+//if the property or fun is not defined inside obj, it's considered as Window obj globally
 
 class user{
-    //this inside of a class will point to everything defined inside constructor
+    //this inside of a class will point to everything defined inside the constructor
     constructor(n){
         this.name = n;
     }
@@ -25,7 +25,7 @@ const user = {
     firstname : "vaish",
     getName(){
         const firstname="heyy"
-        //this this is pointing to USER not specific to this function
+        //this is pointing to USER, not specific to this function
         return this.firstname;
     },
 }
@@ -35,8 +35,8 @@ console.log(user.getName)// vaish as this points to USEr
 function makeUser(){
     return{
         name:'vaish',
-        ref:this //here the ref will point to window obj and window soen't have name
-        //can fix this by making ref as fun which will return this then will point to name
+        ref:this //here the ref will point to the window object and the window doen't have a name
+        //can fix this by making ref as fun, which will return this, then will point to name
     }
 }
 let user = makeUser();
@@ -44,19 +44,19 @@ console.log(user.ref.name)//nothing will print
 
 //QUE 3
 const user = {
-    name:"vaish",
+    name: "vaish",
     logmsg(){
         console.log(this.name)//?NOTHING
     }
 }
 setTimeout(user.logmsg,1000);
-//cause setimeout is using user.logmsg as callback and when gets called 
-//it wont have access to user & window don't have any name so 
+//cause setimeout is using user.logmsg as callback, and when it gets called 
+//it won't have access to the user & window, don't have any name, so 
 //fix
 setTimeout(function(){
         user.logmsg();
     },1000)
-//in this case the logmg is called as method of object user //print vaish 
+//in this case, the log msg is called as method of object user //print vaish 
 
 //QUE 4
 //create an object calculator
@@ -83,9 +83,9 @@ function callback(){
 }
 const object ={
     length:5,
-    //this method target to object object 
+    //this method targets the object 
     method(fn){
-        //since thi method called from inside of fun it will target global object 
+        //since this method is called from inside of fun, it will target the global object 
         fn();
     }
 }
@@ -100,7 +100,7 @@ const calc = {
     total:0,
     add(a){
         this.total+=a;
-        return this; //it will return whole obj need for function chnaing
+        return this; //it will return the whole object needed for the function chaining
     },
     multiply(a){
         this.total*=a;
