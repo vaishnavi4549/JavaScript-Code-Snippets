@@ -1,8 +1,8 @@
 //Map 
 
-//what is map -> is used for creating new array from eisting one by appliying function to ech ele in array
+//what is map -> is used for creating a new array from an existing one by applying a function to each ele in the array
 const nums = [1,2,3,4];
-//multiple each ele
+//multiply each ele
 const multiplied = nums.map((x)=>{
     return x*3;
 }); // contains callback fun : current ele & index
@@ -10,7 +10,7 @@ console.log(multiplied) //creates new aarray with each value multiplied by 3
 
 
 //POLYFILL for MAP
-//prototype is just adding this mymap fun to array in curr js file
+//prototype is just adding this mymap fun to the array in the current js file
 // map syntax = Array.map((num,index,arr)=>{});
 Array.prototype.mymap = function (cb){
     let temp = [];
@@ -27,7 +27,7 @@ Array.prototype.mymap = function (cb){
     }
     return temp;
 }
-//this gets called once then for all oter ele callback gest called which we are passingin mymap
+//this gets called once, then for all other ele callback gets called, which we are passing mymap
 const multipliedwithmymap = nums.mymap((x)=>{
     //this is the cb
     return x*3;
@@ -36,8 +36,8 @@ const multipliedwithmymap = nums.mymap((x)=>{
 
 
 //FILTER
-//what is filter - > takes each ele in array and apply conidition if condition return true the ele pushed into output array
-// only keep the ele which ful fills the criteria
+//what is filter -> takes each ele in the array and applies a condition if the condition returns true, the element is pushed into the output array
+// only keep the ele which fulfills the criteria
 
 const morethantwo = nums.filter((x)=>{
     return x>2; // only ele which greter than 2
@@ -47,7 +47,7 @@ const morethantwo = nums.filter((x)=>{
 Array.prototype.myfiter = function(cb){
     let temp = [];
     for(let i=0;i<this.length;i++){
-        if(cb(this[i],ithis)){
+        if(cb(this[i],I,this)){
             temp.push(this[i]);
         }
     }
@@ -61,14 +61,14 @@ const morethantwowithmyfilter = nums.myfiter((x)=>{
 //REDUCE
 // what is it -> it reduces the array of values down to one value;
 //callback fun & initoal value
-//callback fun contains accumulator:result of prev calculations,currentvalue,index.arr as params
+//callback fun contains accumulator: result of prev calculations,currentvalue, index.arr as params
 const sum = nums.reduce((acc,curr)=>{
     return acc+curr;
 },0)
 
 //POLYFILL for REDUCE
 //ARR.REDUCE((ACC,CURR,NDEX,ARR)=>{},IniatilaValue);
-//if no initial value given accc takes first ele of array as initisl value
+//if no initial value given, acc takes the first ele of the array as the initial value
 
 Array.prototype.myReduce = function (cb,IniatilaValue){
     var acc = IniatilaValue;
@@ -84,12 +84,12 @@ const sumwithmyreduce = nums.myReduce((acc,curr)=>{
 
 //DIFFERENCE BETWEEN MAP and FOREACH
 const arr = [1,2,3,4]
-//return new array || we can store result in new array
+//return new array || we can store the result in a new array
 arr.map((x)=>{
     return x*2;
 })
-//update the existing array || we can not store result in new array as it does not create new one
-//can use it where we want to updatea array directltly
+//update the existing array || we can not store the result in the new array as it does not create a new one
+//can use it where we want to update an array directly
 arr.forEach((x)=>{
     return x*2;
 })
