@@ -1,19 +1,19 @@
 //CALL 
-//So .call() is very useful when I want to control the context in which a function is executed, 
+//So call() is very useful when I want to control the context in which a function is executed, 
 //especially in cases of inheritance, function reuse, or dynamic binding of this.
 const obj = {name:'vaish'}
 function sayHello(args){
     return "hello" + this.name + "age is" + args;
 }
-sayHello();//hello: as there is no name inside window object
+sayHello();//hello: as there is no name inside the window object
 
-//we want to prrint hello vaish use CALL
-// it will take object to be used and list of args fot that fun to be called
+//we want to print hello vaish use CALL
+// it will take an object to be used and a list of args for that function to be called
 
 sayHello.call(obj,24)//this.name inside sayhello will now point to obj
 
 //APPLY
-//similar to call just send arg is goint to be array of args
+//similar to call, just send arg is going to be an array of args
 const obj2 = {name:'vaish'}
 function sayHello(age,loc){
     return "hello" + this.name + "age is" + age + "lives in"+ loc;
@@ -21,8 +21,8 @@ function sayHello(age,loc){
 console.log(sayHello.apply(obj2,[24,"bangalore"]))
 
 //BIND 
-//creaetes teh reusable functions 
-//bind provide a function that can be used later on
+//creates the reusable functions 
+//bind provides a function that can be used later on
 const bindfun = sayHello.bind(obj);
 console.log(bindfun(24));
 
@@ -61,18 +61,18 @@ for(let i=0;i<animals.length;i++){
 //#1 whale queen
 
 //QUE 3
-//append an array to aother array
-//concat & for can do it but a  new way
+//append an array to another array
+//concat & for can do it, but a  new way
 const arr1 = ['a','b']
 const arr2 = [1,2,3,4];
 arr1.push(arr2)
-console.log(arr1) // it will be a b and array of 4 ele
+console.log(arr1) // it will be a b and an array of 4 ele
 
 //apply takes arr as arg ans will append to arr1
 arr1.push.apply(arr1,arr2); //['a', 'b', 1, 2, 3, 4]
 
 //QUE4
-//find min /ma using apply
+//find min /max using apply
 const numbers = [1,2,3,4,5,6]
 console.log(Math.min.apply(null,numbers)) //min 
 console.log(Math.max.apply(null,numbers)) //max
@@ -83,7 +83,7 @@ function f(){
     console.log(this)//? this will pont to window object
 }
 let user = {
-    g:f.bind(null)// this will return us another fun as using bind method with contet of null
+    g:f.bind(null)// this will return us another fun as using bind method with the content of null
 }
 user.g();
 
@@ -94,10 +94,10 @@ function f(){
 }
 f=f.bind({name:"vaish"}).bind({name:'kulkarni'});
 f() // vaish
-//as if the peticular fun is bound to a specific obje it won't changes
-//bind chaningi ng deoes not eis
+//as if the particular fun is bound to a specific object it won't change
+//bind chaining does not exist
 
-//QUE : Explicite binding with arraow function
+//QUE: Explicit binding with arrow function
 const myage=20;
 var peroson = {
     name:'vaish',
@@ -118,10 +118,10 @@ let car={
     company:'ferrari'
 }
 function purchase(price){
-    //as this is currently pointin gto global scope
+    //as this is currently pointing to global scope
     console.log('hyeyyy',this.color,this.company,price)
 }
 purchase.call(car,10000000)
-//we want to invoke this fun on the car obj
+//we want to invoke this fun on the car object
 //--------------------------
 //POLYFILL
