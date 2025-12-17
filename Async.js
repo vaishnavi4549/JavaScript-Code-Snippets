@@ -32,3 +32,41 @@ obj.startTimer();
 setTimeout(()=>{
     obj.stopTimer();
 },5000)
+
+// Execute an array of asynchronous functions one after the other in sequence using callbacks
+
+function asyncfuntion1(callback){
+    console.log('started 1')
+    const timer = setTimeout(()=>{
+        console.log('completed function 1')
+        callback();
+    },1000);
+}
+
+function asyncfuntion2(callback){
+    console.log('started 2')
+    const timer = setTimeout(()=>{
+        console.log('completed function 2')
+        callback()
+    },1000);
+}
+
+function asyncfuntion3(callback){
+    console.log('stated 3')
+    const timer = setTimeout(()=>{
+        console.log('completed function 3')
+       callback  && callback();
+    },1000);
+}
+
+function callbackmanager(callbacks){
+    function execute(index){
+        if(index === callbacks.length) return;
+        
+        callbacks[index](()=> execute(index+1));
+    }
+    
+    execute(0);
+}
+
+callbackmanager([asyncfuntion1,asyncfuntion2,asyncfuntion3])
