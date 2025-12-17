@@ -1,4 +1,4 @@
-Write a utility which prints numbers starting from an initial value and increment in steps which can be started and stopped by the user, any number of times
+//Write a utility which prints numbers starting from an initial value and increment in steps which can be started and stopped by the user, any number of times
 
 function Timer(initialvalue, endvalue){
     let value = initialvalue
@@ -33,7 +33,7 @@ setTimeout(()=>{
     obj.stopTimer();
 },5000)
 
-Execute an array of asynchronous functions one after the other in sequence using callbacks
+//Execute an array of asynchronous functions one after the other in sequence using callbacks
 
 function asyncfuntion1(callback){
     console.log('started 1')
