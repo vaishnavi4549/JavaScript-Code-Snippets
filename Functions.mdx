@@ -1,0 +1,86 @@
+// Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface
+
+function Calculator(num1,num2){
+    function sum(){
+        return num1+num2;
+    }
+    
+    function difference(){
+        return num1-num2;
+    }
+    
+    function product(){
+        return num1*num2;
+    }
+    
+    function divide(){
+        return num1/num2
+    }
+    
+    return {sum,difference,product,divide}
+}
+
+const obj = Calculator(12,2);
+console.log(obj.sum())
+console.log(obj.difference());
+console.log(obj.product());
+console.log(obj.divide());
+
+
+// Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface
+//CLASS
+class Calculator{
+     num1= null;
+     num2 = null;
+    
+    constructor(a,b){
+        this.num1 = a;
+        this.num2 = b;
+    }
+    sum(){
+        return this.num1+this.num2;
+    }
+    
+    difference(){
+        return this.num1-this.num2;
+    }
+    
+    product(){
+        return this.num1*this.num2;
+    }
+    
+    divide(){
+        return this.num1/this.num2
+    }
+}
+
+const obj = new Calculator(12,2);
+console.log(obj.sum())
+console.log(obj.difference());
+console.log(obj.product());
+console.log(obj.divide());
+
+// Design a private counter function which exposes increment and retrive functionalities
+
+function Counter(){
+    let count=0;
+    
+    function increment(){
+        return count+=1;
+    }
+    
+    function decrement(){
+        return count-=1;
+    }
+    
+    function getValue(){
+        return count;
+    }
+    
+    return {increment,decrement,getValue}
+}
+
+const obj = Counter();
+console.log(obj.increment());
+console.log(obj.getValue())
+
