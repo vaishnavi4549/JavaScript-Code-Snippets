@@ -1,4 +1,4 @@
-Write a utility which prints numbers starting from an initial value and increment in steps which can be started and stopped by the user, any number of times
+//Write a utility which prints numbers starting from an initial value and increment in steps which can be started and stopped by the user, any number of times
 
 function Timer(initialvalue, endvalue){
     let value = initialvalue;
