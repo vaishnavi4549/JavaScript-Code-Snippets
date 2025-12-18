@@ -1,4 +1,4 @@
-Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface
+// Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface
 
 function Calculator(num1,num2){
     function sum(){
@@ -27,7 +27,7 @@ console.log(obj.product());
 console.log(obj.divide());
 
 
-Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface CLASS
+/// Design a Calculator interface for 2 number inputs which can perform sum, difference, product and dividend whenever invoked on the same interface CLASS
 
 class Calculator{
      num1= null;
@@ -60,7 +60,7 @@ console.log(obj.difference());
 console.log(obj.product());
 console.log(obj.divide());
 
-Design a private counter function which exposes increment and retrive functionalities
+//Design a private counter function which exposes increment and retrive functionalities
 
 function Counter(){
     let count=0;
@@ -84,3 +84,29 @@ const obj = Counter();
 console.log(obj.increment());
 console.log(obj.getValue())
 
+//  Write a polyfill for bind function
+// The bind method creates a new function that, when called, has its this keyword set to the provided context
+const details={
+    name:'vaishnavi',
+    edu: 'btech'
+}
+Function.prototype.mybind = function(...args){
+    let obj = this
+    const params = args.slice(1);
+    return function(){
+        obj.call(args[0],params)
+    }
+}
+
+const newobj = getDetails.mybind(details,"badminton")
+newobj()
+
+//Write a function which helps to achieve multiply(a)(b) and returns product of a and b
+
+function multiplyby3(x){
+    return function (y){
+       console.log(x*y)
+    }
+}
+
+multiplyby3(2)(3);
