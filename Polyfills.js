@@ -71,15 +71,20 @@ const sum = nums.reduce((acc,curr)=>{
 //if no initial value given, acc takes the first ele of the array as the initial value
 
 
+
 const arr = [10,10,10,10]
 
 function myreduce(cb,initial){
-    let acc = initial !== undefined ? initial : this[0];
-    if(!this.length) {
+    if(!this.length || initial===undefined) {
         throw Error('array is empty')
     }
-    
-    for(let i=0;i<this.length;i++){
+    acc= initial
+    let startindex=0
+    if(acc===undefined){
+        acc = this[0]
+        startindex = 1
+    }
+    for(let i=startindex;i<this.length;i++){
         acc = cb(acc,this[i],this)
     }
     return acc;
