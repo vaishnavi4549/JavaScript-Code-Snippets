@@ -70,16 +70,27 @@ const sum = nums.reduce((acc,curr)=>{
 //ARR.REDUCE((ACC,CURR,NDEX,ARR)=>{},IniatilaValue);
 //if no initial value given, acc takes the first ele of the array as the initial value
 
-Array.prototype.myReduce = function (cb,IniatilaValue){
-    var acc = IniatilaValue;
+
+const arr = [10,10,10,10]
+
+function myreduce(cb,initial){
+    let acc = initial !== undefined ? initial : this[0];
+    if(!this.length) {
+        throw Error('array is empty')
+    }
+    
     for(let i=0;i<this.length;i++){
-        acc = acc ? cb(acc,this[i],this) : this[i];
+        acc = cb(acc,this[i],this)
     }
     return acc;
 }
-const sumwithmyreduce = nums.myReduce((acc,curr)=>{
-    return acc+curr;
+
+Array.prototype.myreduce=myreduce
+
+const ans = arr.myreduce((acc,curr)=>{
+    return acc+curr
 },0)
+console.log(ans)
 
 
 //DIFFERENCE BETWEEN MAP and FOREACH
